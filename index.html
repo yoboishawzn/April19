@@ -868,6 +868,77 @@
             .contact-cta { padding: 50px 30px; }
             .contact-cta h2 { font-size: 1.8rem; }
         }
+        /* ===== HOVER VIDEO OVERLAY ===== */
+        .hover-video-wrap {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* For newunit cards the image is not inside .listing-img so we target it directly */
+        .newunit-card .hover-video-wrap {
+            height: auto;
+        }
+
+        .hover-video-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* newunit-img keeps its own height */
+        .newunit-card .hover-video-wrap img {
+            height: 200px;
+        }
+
+        .hover-video-wrap video.hover-vid {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .hover-video-wrap:hover img {
+            opacity: 0;
+        }
+
+        .hover-video-wrap:hover video.hover-vid {
+            opacity: 1;
+        }
+
+        /* Small "▶ Preview" pill that appears on hover */
+        .hover-video-wrap::after {
+            content: '▶ Preview';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: rgba(0,0,0,0.65);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+            z-index: 5;
+        }
+
+        .hover-video-wrap:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         @media (max-width: 600px) {
             .listings-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 1.8rem; }
@@ -962,7 +1033,11 @@
         <div id="newunits" class="tab-content">
             <div class="newunits-grid">
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1BLZ8Pk4aL/', '_blank')">
-                    <img src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
+                    <div class="hover-video-wrap">
+                        <img src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
+                        <!-- Replace src with your actual video path e.g. /dorms/materials/ss100-preview.mp4 -->
+                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
+                    </div>
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>Studio Unit at Sunshine 100</h4>
@@ -971,7 +1046,11 @@
                     </div>
                 </div>
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
-                    <img src="/dorms/materials/1309.jpg" alt="1BR Homestay" class="newunit-img">
+                    <div class="hover-video-wrap">
+                        <img src="/dorms/materials/1309.jpg" alt="1BR Homestay" class="newunit-img">
+                        <!-- Replace src with your actual video path e.g. /dorms/materials/1309-preview.mp4 -->
+                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
+                    </div>
                     <span class="newunit-badge hot">HOT</span>
                     <div class="newunit-info">
                         <h4>Newly Renovated 1BR Ridgewood Towers</h4>
@@ -980,7 +1059,11 @@
                     </div>
                 </div>
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1Ed3JF4q36/', '_blank')">
-                    <img src="/dorms/materials/1104.jpeg" alt="Solo Room" class="newunit-img">
+                    <div class="hover-video-wrap">
+                        <img src="/dorms/materials/1104.jpeg" alt="Solo Room" class="newunit-img">
+                        <!-- Replace src with your actual video path e.g. /dorms/materials/1104-preview.mp4 -->
+                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
+                    </div>
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>New Female Condo Sharing Unit</h4>
@@ -990,7 +1073,11 @@
                 </div>
                 <!-- ⚠️ NOTE: Azure card reuses Ridgewood share link — update with the correct FB post URL when available -->
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
-                    <img src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
+                    <div class="hover-video-wrap">
+                        <img src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
+                        <!-- Replace src with your actual video path e.g. /dorms/materials/azure-preview.mp4 -->
+                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
+                    </div>
                     <span class="newunit-badge hot">TRENDING</span>
                     <div class="newunit-info">
                         <h4>1BR Azure Residence</h4>
@@ -1038,14 +1125,14 @@
         <h2 class="section-title">DORMS</h2>
         <p class="section-sub">Stay short-term (1–5 months) or long-term (6 months–1 year). Flexible leases, cozy spaces—your home, your timeline.</p>
         <div class="listings-grid">
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/bedspace.jpg"><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Female double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/classic.jpg"><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/dorms1.jpg"><span class="listing-tag long">4-pax</span></div><div class="listing-info"><h4>Quad room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/dorms2.jpg"><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Female quad sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/dorms3.jpg"><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,200 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/dorms4.jpg"><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Male double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/soloo.jpg"><span class="listing-tag long">Solo</span></div><div class="listing-info"><h4>Female solo room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱8,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><img src="/dorms/materials/dorms6.jpg"><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Common area</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱5,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/bedspace.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Female double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/classic.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms1.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">4-pax</span></div><div class="listing-info"><h4>Quad room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms2.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Female quad sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms3.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,200 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms4.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Male double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/soloo.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">Solo</span></div><div class="listing-info"><h4>Female solo room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱8,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms6.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Common area</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱5,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
         </div>
         <div class="see-more-wrapper">
             <a href="dorms" class="see-more-btn">See More Dorms <i class="fas fa-arrow-right"></i></a>
@@ -1057,14 +1144,14 @@
         <h2 class="section-title">HOMESTAY</h2>
         <p class="section-sub">Short trip or extended stay? We've got you. Daily, weekly, and monthly rates available.</p>
         <div class="listings-grid">
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air1.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air2.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air3.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air4 fame.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air azu 5.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air azu 6.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/airbnb.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><img src="/dorms/materials/air8.jpg"><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air1.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air2.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air3.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air4 fame.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air azu 5.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air azu 6.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/airbnb.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air8.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
         </div>
         <div class="see-more-wrapper">
             <a href="homestay" class="see-more-btn2">See More Homestays <i class="fas fa-arrow-right"></i></a>
@@ -1200,7 +1287,30 @@
         });
     }
     
-    // Testimonials Carousel
+    // ===== HOVER VIDEO PLAY/PAUSE =====
+    // For each card with a .hover-video-wrap, play its video on mouseenter and pause+reset on mouseleave.
+    // To activate: set the video's src attribute to your actual .mp4 file path.
+    // Example: <video class="hover-vid" src="/dorms/materials/bedspace-preview.mp4" ...>
+    document.querySelectorAll('.hover-video-wrap').forEach(function(wrap) {
+        var vid = wrap.querySelector('video.hover-vid');
+        if (!vid) return;
+
+        wrap.addEventListener('mouseenter', function() {
+            // Only attempt play if a src has been set
+            if (vid.getAttribute('src') && vid.getAttribute('src') !== '') {
+                vid.currentTime = 0;
+                vid.play().catch(function() {
+                    // Autoplay blocked — silently ignore
+                });
+            }
+        });
+
+        wrap.addEventListener('mouseleave', function() {
+            vid.pause();
+            vid.currentTime = 0;
+        });
+    });
+
     $(document).ready(function() {
         var $track = $('.testimonials-track');
         var $cards = $track.children();
