@@ -958,10 +958,11 @@
         </div>
         
         <!-- New Units Tab -->
+        <!-- ✅ FIXED: Cards now open Facebook posts (same as Promos), instead of redirecting to internal pages -->
         <div id="newunits" class="tab-content">
             <div class="newunits-grid">
-                <div class="newunit-card" onclick="window.location.href='dorms'">
-                    <img href="https://www.facebook.com/share/p/1BLZ8Pk4aL/" src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
+                <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1BLZ8Pk4aL/', '_blank')">
+                    <img src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>Studio Unit at Sunshine 100</h4>
@@ -969,8 +970,8 @@
                         <div class="newunit-price">₱18,000 <small>/month</small></div>
                     </div>
                 </div>
-                <div class="newunit-card" onclick="window.location.href='homestay'">
-                    <img href="https://www.facebook.com/share/p/1HsiC9UYq3/" src="/dorms/materials/1309.jpg" alt="1BR Homestay" class="newunit-img">
+                <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
+                    <img src="/dorms/materials/1309.jpg" alt="1BR Homestay" class="newunit-img">
                     <span class="newunit-badge hot">HOT</span>
                     <div class="newunit-info">
                         <h4>Newly Renovated 1BR Ridgewood Towers</h4>
@@ -978,8 +979,8 @@
                         <div class="newunit-price">₱2,499 <small>/night</small></div>
                     </div>
                 </div>
-                <div class="newunit-card" onclick="window.location.href='dorms'">
-                    <img href="https://www.facebook.com/share/p/1Ed3JF4q36/" src="/dorms/materials/1104.jpeg" alt="Solo Room" class="newunit-img">
+                <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1Ed3JF4q36/', '_blank')">
+                    <img src="/dorms/materials/1104.jpeg" alt="Solo Room" class="newunit-img">
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>New Female Condo Sharing Unit</h4>
@@ -987,8 +988,9 @@
                         <div class="newunit-price">₱6,500 <small>/month</small></div>
                     </div>
                 </div>
-                <div class="newunit-card" onclick="window.location.href='homestay'">
-                    <img href="https://www.facebook.com/share/p/1HsiC9UYq3/" src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
+                <!-- ⚠️ NOTE: Azure card reuses Ridgewood share link — update with the correct FB post URL when available -->
+                <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
+                    <img src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
                     <span class="newunit-badge hot">TRENDING</span>
                     <div class="newunit-info">
                         <h4>1BR Azure Residence</h4>
@@ -1109,12 +1111,12 @@
     <div class="testimonials-section">
         <div class="testimonials-container">
             <div class="testimonials-track">
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“Yay! very accommodating and ang smooth ng process. Just move in yesterday after payment the unit is all good love the process thank you everyone 😊”</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Alyssa</h5><div class="author-occupation">Marketing Specialist, BGC</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“Seamless transaction for me as someone from the province looking for a place to relocate near BGC. Highly recommended!”</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Andora</h5><div class="author-occupation">Accountant, Makati</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“Host is responsive and accomodating. It's my second time booking with them and will definitely book again on my next trip <3”</p><div class="testi-author"><div class="author-avatar"><span>H</span></div><div class="author-info"><h5>Hazel-jean</h5><div class="author-occupation">Flight Attendant</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“I booked around 8–9 PM after arriving from a flight. I was pleasantly surprised by how well they handled the booking.”</p><div class="testi-author"><div class="author-avatar"><span>J</span></div><div class="author-info"><h5>Joan</h5><div class="author-occupation">Registered Nurse</div><div class="author-platform"><i class="fas fa-hotel"></i> Agoda Guest</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“The team was very responsive and professional. Highly recommend Citispace for property management!”</p><div class="testi-author"><div class="author-avatar"><span>M</span></div><div class="author-info"><h5>Maria Santos</h5><div class="author-occupation">Property Investor, BGC</div><div class="author-platform"><i class="fas fa-building"></i> Property Owner</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>“Great experience from start to finish. The unit was exactly as described and check-in was seamless.”</p><div class="testi-author"><div class="author-avatar"><span>R</span></div><div class="author-info"><h5>Ramon</h5><div class="author-occupation">Software Engineer, BGC</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Yay! very accommodating and ang smooth ng process. Just move in yesterday after payment the unit is all good love the process thank you everyone 😊"</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Alyssa</h5><div class="author-occupation">Marketing Specialist, BGC</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Seamless transaction for me as someone from the province looking for a place to relocate near BGC. Highly recommended!"</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Andora</h5><div class="author-occupation">Accountant, Makati</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Host is responsive and accomodating. It's my second time booking with them and will definitely book again on my next trip <3"</p><div class="testi-author"><div class="author-avatar"><span>H</span></div><div class="author-info"><h5>Hazel-jean</h5><div class="author-occupation">Flight Attendant</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"I booked around 8–9 PM after arriving from a flight. I was pleasantly surprised by how well they handled the booking."</p><div class="testi-author"><div class="author-avatar"><span>J</span></div><div class="author-info"><h5>Joan</h5><div class="author-occupation">Registered Nurse</div><div class="author-platform"><i class="fas fa-hotel"></i> Agoda Guest</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"The team was very responsive and professional. Highly recommend Citispace for property management!"</p><div class="testi-author"><div class="author-avatar"><span>M</span></div><div class="author-info"><h5>Maria Santos</h5><div class="author-occupation">Property Investor, BGC</div><div class="author-platform"><i class="fas fa-building"></i> Property Owner</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Great experience from start to finish. The unit was exactly as described and check-in was seamless."</p><div class="testi-author"><div class="author-avatar"><span>R</span></div><div class="author-info"><h5>Ramon</h5><div class="author-occupation">Software Engineer, BGC</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
             </div>
         </div>
     </div>
