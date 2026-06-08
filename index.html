@@ -213,6 +213,9 @@
             border: 1px solid var(--border-medium);
             transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .promo-card:hover {
@@ -220,15 +223,40 @@
             box-shadow: 0 20px 28px -12px var(--shadow-medium);
         }
         
+        .promo-img-container {
+            position: relative;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+        
         .promo-card-img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .promo-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent-2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
         }
         
         .promo-card-content {
             padding: 20px;
-            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .promo-card-content h4 {
@@ -242,18 +270,7 @@
             font-size: 0.9rem;
             color: var(--text-tertiary);
             margin-bottom: 12px;
-        }
-        
-        .promo-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--accent-2);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            flex: 1;
         }
         
         .promo-validity {
@@ -264,6 +281,8 @@
             background: var(--bg-tertiary);
             padding: 4px 12px;
             border-radius: 20px;
+            margin-top: auto;
+            align-self: flex-start;
         }
         
         /* New Units Grid */
@@ -282,6 +301,9 @@
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .newunit-card:hover {
@@ -307,13 +329,16 @@
         }
         
         .newunit-img {
-            height: 180px;
             width: 100%;
+            height: 200px;
             object-fit: cover;
         }
         
         .newunit-info {
             padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .newunit-info h4 {
@@ -333,6 +358,7 @@
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--accent-2);
+            margin-top: auto;
         }
         
         .newunit-price small {
@@ -506,6 +532,7 @@
             box-shadow: 0 15px 30px -12px var(--shadow-medium);
             border: 1px solid var(--border-medium);
             transition: transform 0.2s;
+            height: 100%;
         }
         
         .manage-card:hover { transform: translateY(-6px); }
@@ -542,6 +569,7 @@
             text-align: center;
             border: 1px solid var(--border-medium);
             transition: transform 0.2s;
+            height: 100%;
         }
         .feature-item:hover { transform: translateY(-5px); }
         .feature-item i {
@@ -571,6 +599,9 @@
             border: 1px solid var(--border-medium);
             transition: all 0.3s ease;
             cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .listing-card:hover { transform: translateY(-5px); box-shadow: 0 20px 28px -12px var(--shadow-medium); }
         
@@ -604,10 +635,10 @@
         .listing-tag.long { background: var(--accent-1); }
         .listing-tag.long2 { background: var(--accent-2); }
         
-        .listing-info { padding: 18px 16px 20px; }
+        .listing-info { padding: 18px 16px 20px; flex: 1; display: flex; flex-direction: column; }
         .listing-info h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; color: var(--accent-1); }
         .listing-location { color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 10px; }
-        .listing-price { font-size: 1.2rem; font-weight: 700; color: var(--accent-2); }
+        .listing-price { font-size: 1.2rem; font-weight: 700; color: var(--accent-2); margin-top: auto; }
         .listing-price small { font-size: 0.8rem; font-weight: 400; color: var(--text-tertiary); }
         .listing-badge {
             background: var(--bg-tertiary);
@@ -618,6 +649,7 @@
             display: inline-block;
             margin-top: 12px;
             font-weight: 500;
+            align-self: flex-start;
         }
 
         /* ===== See More Button ===== */
@@ -890,7 +922,7 @@
         <div id="promos" class="tab-content active">
             <div class="promos-grid">
                 <div class="promo-card" onclick="window.open('https://www.facebook.com/photo?fbid=1391053773076362', '_blank')">
-                    <div style="position: relative;">
+                    <div class="promo-img-container">
                         <img src="/dorms/materials/promo1.jpg" alt="Discount on longer stay" class="promo-card-img">
                         <span class="promo-badge">🔥 LIMITED</span>
                     </div>
@@ -901,7 +933,7 @@
                     </div>
                 </div>
                 <div class="promo-card" onclick="window.open('https://www.facebook.com/photo?fbid=122255455748100232', '_blank')">
-                    <div style="position: relative;">
+                    <div class="promo-img-container">
                         <img src="/dorms/materials/promo2.jpg" alt="Happy Hour Rates" class="promo-card-img">
                         <span class="promo-badge">⏰ HAPPY HOUR</span>
                     </div>
@@ -912,7 +944,7 @@
                     </div>
                 </div>
                 <div class="promo-card" onclick="window.open('https://www.facebook.com/photo?fbid=122202599906444978', '_blank')">
-                    <div style="position: relative;">
+                    <div class="promo-img-container">
                         <img src="/dorms/materials/promo3.jpg" alt="Fresh Studio Units" class="promo-card-img">
                         <span class="promo-badge">✨ NEW</span>
                     </div>
