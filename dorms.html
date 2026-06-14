@@ -231,7 +231,7 @@
       <div class="nav-links"><a href="index">Home</a><a href="dorms" class="active">Dorms</a><a href="homestay">Condotels</a><a href="prop">Property Management</a><a href="contact">Contact</a></div>
     </nav>
     
-    <section class="page-header"><div class="container"><h1>Dorms • Condotels • Bedspace</h1><p>Affordable dorms near business districts. Quality rooms, smart prices.</p></div></section>
+    <section class="page-header"><div class="container"><h1>Dorms • Condo Shares • Bedspace</h1><p>Affordable dorms near business districts. Quality rooms, smart prices.</p></div></section>
 
     <div class="filter-section">
       <h2 class="filter-title">Filter by Location</h2>
@@ -243,7 +243,7 @@
     
       <h2 class="filter-title" style="margin-top: 20px;">Filter by Room Type</h2>
       <div class="filter-tags">
-        <div class="filter-tag active" data-filter="all" data-filter-type="room">All Rooms (89)</div>
+        <div class="filter-tag active" data-filter="all" data-filter-type="room">All Rooms (92)</div>
         <div class="filter-tag" data-filter="studio" data-filter-type="room">Studio</div>
         <div class="filter-tag" data-filter="classic" data-filter-type="room">Classic</div>
         <div class="filter-tag" data-filter="quad" data-filter-type="room">Quad Sharing</div>
@@ -264,7 +264,7 @@
 
     <footer class="footer">
       <div class="footer-grid">
-        <div class="footer-col"><div class="logo"><span>Citispace Properties</span></div><p>Making property management simpler, making living experiences better. Rentals · Condotels · Property Management, one-stop professional service.</p><div class="social-icons"><i class="fab fa-facebook-f" onclick="window.open('https://www.facebook.com/citispacedorms')"></i><i class="fab fa-tiktok" onclick="window.open('https://www.tiktok.com/@citispacedorms?lang=en')"></i></div></div>
+        <div class="footer-col"><div class="logo"><span>Citispace Properties</span></div><p>Making property management simpler, making living experiences better. Rentals · Homestays · Property Management, one-stop professional service.</p><div class="social-icons"><i class="fab fa-facebook-f" onclick="window.open('https://www.facebook.com/citispacedorms')"></i><i class="fab fa-tiktok" onclick="window.open('https://www.tiktok.com/@citispacedorms?lang=en')"></i></div></div>
         <div class="footer-col"><h5>Services</h5><a href="dorms">Dorms</a><a href="homestay">Condotels</a><a href="prop">Property Management</a></div>
         <div class="footer-col"><h5>Contact</h5><div class="contact-info"><p><i class="fa-regular fa-envelope"></i> info@citispaceproperties.com</p><p><i class="fas fa-phone"></i> (02) 8244-2883</p><p><i class="fa-regular fa-clock"></i> Mon‑Sun 9:00 am - 6:00 pm</p></div></div>
       </div>
@@ -391,6 +391,14 @@
       85: ['dorms/solo/solo_taguig_11.jpg', 'dorms/solo/solo_taguig_11a.jpg', 'dorms/solo/solo_taguig_11b.jpg', 'dorms/solo/solo_taguig_11c.jpg', 'dorms/solo/solo_taguig_11d.jpg'],
       86: ['dorms/solo/solo_taguig_12.jpg', 'dorms/solo/solo_taguig_12a.jpg', 'dorms/solo/solo_taguig_12b.jpg', 'dorms/solo/solo_taguig_12c.jpg', 'dorms/solo/solo_taguig_12d.jpg'],
       87: ['dorms/trio/trio_taguig_1.jpg', 'dorms/trio/trio_taguig_1a.jpg', 'dorms/trio/trio_taguig_1b.jpg', 'dorms/trio/trio_taguig_1c.jpg', 'dorms/trio/trio_taguig_1d.jpg'],
+
+      // ── NEW UNIT (3 bedrooms, Floor 15, Taguig, Female) ──────────
+      // 88 = Classic Room  → replace paths with your actual images
+      88: ['dorms/materials/1513-sala3.png', 'dorms/materials/1513-sala2.png', 'dorms/materials/1513-cr.png', 'dorms/materials/1513-classic.png', 'dorms/materials/1513-classic2.png', 'dorms/materials/1513-classic3.png'],
+      // 89 = Double Sharing (bedroom 2) → replace paths with your actual images
+      89: ['dorms/materials/1513-sala2.png', 'dorms/materials/1513-sala3.png', 'dorms/materials/1513-c3.png', 'dorms/materials/1513-room1.png', 'dorms/materials/1513-room12.png'],
+      // 90 = Double Sharing (bedroom 3) → replace paths with your actual images
+      90: ['dorms/materials/1513-sala1.png', 'dorms/materials/1513-sala3.png', 'dorms/materials/1513-sala2.png', 'dorms/materials/1513-room2.png', 'dorms/materials/1513-room22.png'],
     };
     
     // ============================================================
@@ -408,6 +416,8 @@
       70: 'female', 71: 'male', 72: 'female', 73: 'female', 74: 'female',
       75: 'female', 76: 'female', 77: 'female', 78: 'female', 79: 'female', 80: 'female', 81: 'female', 82: 'female', 83: 'female', 84: 'female', 85: 'female', 86: 'female',
       87: 'female',
+      // New unit — all female
+      88: 'female', 89: 'female', 90: 'female',
     };
     
     // ============================================================
@@ -422,6 +432,8 @@
       71: 11, 72: 11, 73: 26, 74: 10,
       75: 7, 76: 15, 77: 13, 78: 7, 79: 20, 80: 25, 81: 24, 82: 16, 83: 5, 84: 22, 85: 17, 86: 18,
       87: 11,
+      // New unit — all on floor 15
+      88: 15, 89: 15, 90: 15,
     };
     
     // ============================================================
@@ -451,11 +463,15 @@
     };
     
     // ============================================================
-    // NEW ROOM ASSIGNMENT (Rooms 29 and 87)
+    // NEW ROOM ASSIGNMENT
+    // 88 = Classic Room (new unit, floor 15)
+    // 89 = Double Sharing bedroom 2 (new unit, floor 15)
+    // 90 = Double Sharing bedroom 3 (new unit, floor 15)
     // ============================================================
     const customRoomNew = {
-      29: true,  // Quad Sharing on 11th floor
-      87: true,  // Trio Room
+      88: true,
+      89: true,
+      90: true,
     };
     
     function getRoomHasRecommended(roomId) {
@@ -591,6 +607,33 @@
       let price = getRoomPrice(idCounter, 'trio', 'taguig', basePrices.trio, trioNames[i]);
       roomData.push({ uniqueId: idCounter++, type: 'trio', location: 'taguig', name: trioNames[i], capacity: '3 pax', price: price, originalPrice: null, hasPromo: false });
     }
+
+    // ── NEW UNIT — 3 bedrooms, Floor 15, Taguig, Female ─────────
+    // Room 88: Classic Room (bedroom 1)
+    roomData.push({
+      uniqueId: 88, type: 'classic', location: 'taguig',
+      name: 'Classic Room in Ridgewood Towers',
+      capacity: '6-8 pax',
+      price: getRoomPrice(88, 'classic', 'taguig', basePrices.classic, 'Classic Room in Ridgewood Towers'),
+      originalPrice: getRoomOriginalPrice(88, 'classic', 'taguig', basePrices.classic),
+      hasPromo: getRoomHasPromo(88, 'classic', 'taguig'),
+    });
+    // Room 89: Double Sharing (bedroom 2)
+    roomData.push({
+      uniqueId: 89, type: 'double', location: 'taguig',
+      name: 'Double Sharing in Ridgewood Towers',
+      capacity: '2 pax',
+      price: getRoomPrice(89, 'double', 'taguig', basePrices.doubleFemale, 'Double Sharing in Ridgewood Towers'),
+      originalPrice: null, hasPromo: false,
+    });
+    // Room 90: Double Sharing (bedroom 3)
+    roomData.push({
+      uniqueId: 90, type: 'double', location: 'taguig',
+      name: 'Double Sharing in Ridgewood Towers',
+      capacity: '2 pax',
+      price: getRoomPrice(90, 'double', 'taguig', basePrices.doubleFemale, 'Double Sharing in Ridgewood Towers'),
+      originalPrice: null, hasPromo: false,
+    });
     
     // Sort function: NEW rooms first, then Recommended rooms, then by name
     function sortRoomsByPriority(rooms) {
