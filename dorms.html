@@ -393,11 +393,9 @@
       87: ['dorms/trio/trio_taguig_1.jpg', 'dorms/trio/trio_taguig_1a.jpg', 'dorms/trio/trio_taguig_1b.jpg', 'dorms/trio/trio_taguig_1c.jpg', 'dorms/trio/trio_taguig_1d.jpg'],
 
       // ── NEW UNIT (3 bedrooms, Floor 15, Taguig, Female) ──────────
-      // 88 = Classic Room  → replace paths with your actual images
+      // Replace paths below with your actual image filenames
       88: ['dorms/materials/1513-sala3.png', 'dorms/materials/1513-sala.png', 'dorms/materials/1513-cr.png', 'dorms/materials/1513-classic.png', 'dorms/materials/1513-classic2.png', 'dorms/materials/1513-classic3.png'],
-      // 89 = Double Sharing (bedroom 2) → replace paths with your actual images
       89: ['dorms/materials/1513-sala2.png', 'dorms/materials/1513-sala3.png', 'dorms/materials/1513-cr.png', 'dorms/materials/1513-room1.png', 'dorms/materials/1513-room12.png'],
-      // 90 = Double Sharing (bedroom 3) → replace paths with your actual images
       90: ['dorms/materials/1513-sala.png', 'dorms/materials/1513-sala2.png', 'dorms/materials/1513-cr.png', 'dorms/materials/1513-room2.png', 'dorms/materials/1513-room22.png'],
     };
     
@@ -443,7 +441,9 @@
       0: 6500, 1: 6500, 2: 6000, 3: 6000, 4: 6000, 5: 6000, 
       7: 6500, 10: 6500,
       30: 6500, 31: 5700, 32: 5700, 33: 6500, 34: 6200, 35: 6500, 36: 6500, 37: 6200, 38: 6500, 
-      39: 6500, 71: 5500, 72: 5500, 73: 7500, 88: 6500, 90: 7500,
+      39: 6500, 71: 5500, 72: 5500, 73: 7500,
+      // New unit: classic at 6500 (no promo), both doubles at 7500
+      88: 6500, 89: 7500, 90: 7500,
     };
     
     // ============================================================
@@ -464,9 +464,8 @@
     
     // ============================================================
     // NEW ROOM ASSIGNMENT
-    // 88 = Classic Room (new unit, floor 15)
-    // 89 = Double Sharing bedroom 2 (new unit, floor 15)
-    // 90 = Double Sharing bedroom 3 (new unit, floor 15)
+    // 88 = Classic Room  | 89 = Double Sharing | 90 = Double Sharing
+    // All three are part of the new unit on Floor 15, Taguig, Female
     // ============================================================
     const customRoomNew = {
       88: true,
@@ -607,34 +606,36 @@
       let price = getRoomPrice(idCounter, 'trio', 'taguig', basePrices.trio, trioNames[i]);
       roomData.push({ uniqueId: idCounter++, type: 'trio', location: 'taguig', name: trioNames[i], capacity: '3 pax', price: price, originalPrice: null, hasPromo: false });
     }
-
+    
     // ── NEW UNIT — 3 bedrooms, Floor 15, Taguig, Female ─────────
-    // Room 88: Classic Room (bedroom 1)
+    // Room 88: Classic Room (bedroom 1) — 6 pax, ₱6,500, no promo
     roomData.push({
       uniqueId: 88, type: 'classic', location: 'taguig',
       name: 'Classic Room in Ridgewood Towers',
       capacity: '6 pax',
-      price: getRoomPrice(88, 'classic', 'taguig', basePrices.classic, 'Classic Room in Ridgewood Towers'),
-      originalPrice: getRoomOriginalPrice(88, 'classic', 'taguig', basePrices.classic),
-      hasPromo: getRoomHasPromo(88, 'classic', 'taguig'),
+      price: 6500,
+      originalPrice: null,
+      hasPromo: false,
     });
-    // Room 89: Double Sharing (bedroom 2)
+    // Room 89: Double Sharing (bedroom 2) — 2 pax, ₱7,500
     roomData.push({
       uniqueId: 89, type: 'double', location: 'taguig',
       name: 'Double Sharing in Ridgewood Towers',
       capacity: '2 pax',
-      price: getRoomPrice(89, 'double', 'taguig', basePrices.doubleFemale, 'Double Sharing in Ridgewood Towers'),
-      originalPrice: null, hasPromo: false,
+      price: 7500,
+      originalPrice: null,
+      hasPromo: false,
     });
-    // Room 90: Double Sharing (bedroom 3)
+    // Room 90: Double Sharing (bedroom 3) — 2 pax, ₱7,500
     roomData.push({
       uniqueId: 90, type: 'double', location: 'taguig',
       name: 'Double Sharing in Ridgewood Towers',
       capacity: '2 pax',
-      price: getRoomPrice(90, 'double', 'taguig', basePrices.doubleFemale, 'Double Sharing in Ridgewood Towers'),
-      originalPrice: null, hasPromo: false,
+      price: 7500,
+      originalPrice: null,
+      hasPromo: false,
     });
-    
+
     // Sort function: NEW rooms first, then Recommended rooms, then by name
     function sortRoomsByPriority(rooms) {
       return [...rooms].sort((a, b) => {
