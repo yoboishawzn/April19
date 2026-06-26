@@ -110,7 +110,7 @@
         .newunit-card:hover { transform: translateY(-5px); box-shadow: 0 20px 28px -12px var(--shadow-medium); }
         .newunit-badge { position: absolute; top: 12px; left: 12px; background: var(--accent-1); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; z-index: 2; }
         .newunit-badge.hot { background: var(--accent-2); }
-        .newunit-img { width: 100%; height: 200px; object-fit: cover; }
+        .newunit-img { width: 100%; height: 200px; object-fit: cover; display: block; }
         .newunit-info { padding: 16px; flex: 1; display: flex; flex-direction: column; }
         .newunit-info h4 { font-size: 1rem; font-weight: 600; color: var(--accent-1); margin-bottom: 4px; }
         .newunit-location { font-size: 0.75rem; color: var(--text-tertiary); margin-bottom: 8px; }
@@ -121,228 +121,35 @@
         @media (max-width: 550px) { .promos-grid { grid-template-columns: 1fr; } .newunits-grid { grid-template-columns: 1fr; } .tab-btn { padding: 8px 20px; font-size: 0.9rem; } }
 
         /* ===== REEL CAROUSEL ===== */
-        .reels-section {
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .reels-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-1);
-            margin-bottom: 8px;
-        }
-
-        .reels-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            margin-bottom: 40px;
-        }
-
-        .reel-carousel-wrapper {
-            position: relative;
-            width: 100%;
-            height: 580px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
-            overflow: hidden;
-        }
-
-        .reel-carousel-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .reel-item {
-            position: absolute;
-            width: 280px;
-            border-radius: 24px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 20px 50px -10px rgba(0,0,0,0.3);
-        }
-
-        /* Center (active) reel */
-        .reel-item.pos-center {
-            transform: translateX(0) scale(1) translateZ(0);
-            opacity: 1;
-            z-index: 10;
-            box-shadow: 0 30px 60px -10px rgba(0,0,0,0.35);
-        }
-
-        /* Left reel */
-        .reel-item.pos-left {
-            transform: translateX(-240px) scale(0.82) translateZ(-80px);
-            opacity: 0.45;
-            z-index: 5;
-            filter: brightness(0.7);
-        }
-
-        /* Right reel */
-        .reel-item.pos-right {
-            transform: translateX(240px) scale(0.82) translateZ(-80px);
-            opacity: 0.45;
-            z-index: 5;
-            filter: brightness(0.7);
-        }
-
-        .reel-item.pos-left:hover,
-        .reel-item.pos-right:hover {
-            opacity: 0.7;
-            filter: brightness(0.85);
-        }
-
-        .reel-item video {
-            width: 100%;
-            display: block;
-        }
-
-        /* Sound toggle on center reel */
-        .reel-sound-btn {
-            position: absolute;
-            bottom: 14px;
-            right: 14px;
-            width: 38px;
-            height: 38px;
-            background: rgba(0,0,0,0.6);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: white;
-            font-size: 1rem;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
-            z-index: 20;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .reel-item.pos-center .reel-sound-btn {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
+        .reels-section { margin: 60px 0; text-align: center; }
+        .reels-title { font-size: 1.5rem; font-weight: 700; color: var(--accent-1); margin-bottom: 8px; }
+        .reels-subtitle { font-size: 0.9rem; color: var(--text-tertiary); margin-bottom: 40px; }
+        .reel-carousel-wrapper { position: relative; width: 100%; height: 580px; display: flex; align-items: center; justify-content: center; perspective: 1200px; overflow: hidden; }
+        .reel-carousel-track { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+        .reel-item { position: absolute; width: 280px; border-radius: 24px; overflow: hidden; cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.3); }
+        .reel-item.pos-center { transform: translateX(0) scale(1) translateZ(0); opacity: 1; z-index: 10; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.35); }
+        .reel-item.pos-left { transform: translateX(-240px) scale(0.82) translateZ(-80px); opacity: 0.45; z-index: 5; filter: brightness(0.7); }
+        .reel-item.pos-right { transform: translateX(240px) scale(0.82) translateZ(-80px); opacity: 0.45; z-index: 5; filter: brightness(0.7); }
+        .reel-item.pos-left:hover, .reel-item.pos-right:hover { opacity: 0.7; filter: brightness(0.85); }
+        .reel-item video { width: 100%; display: block; }
+        .reel-sound-btn { position: absolute; bottom: 14px; right: 14px; width: 38px; height: 38px; background: rgba(0,0,0,0.6); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; font-size: 1rem; backdrop-filter: blur(4px); transition: all 0.3s ease; z-index: 20; opacity: 0; pointer-events: none; }
+        .reel-item.pos-center .reel-sound-btn { opacity: 1; pointer-events: auto; }
         .reel-sound-btn:hover { background: var(--accent-2); transform: scale(1.08); }
-
-        /* Reel label overlay on center */
-        .reel-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 40px 16px 16px;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-            color: white;
-            text-align: left;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
+        .reel-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 16px 16px; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%); color: white; text-align: left; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
         .reel-item.pos-center .reel-label { opacity: 1; }
-
         .reel-label h5 { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; }
         .reel-label span { font-size: 0.75rem; opacity: 0.8; }
-
-        /* Navigation arrows */
-        .reel-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
-            background: white;
-            border: 2px solid var(--border-medium);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 20;
-            font-size: 1.1rem;
-            color: var(--accent-1);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-            transition: all 0.3s ease;
-        }
-
+        .reel-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; background: white; border: 2px solid var(--border-medium); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20; font-size: 1.1rem; color: var(--accent-1); box-shadow: 0 4px 16px rgba(0,0,0,0.12); transition: all 0.3s ease; }
         .reel-nav-btn:hover { background: var(--accent-2); color: white; border-color: var(--accent-2); transform: translateY(-50%) scale(1.05); }
-
         .reel-nav-btn.prev { left: 20px; }
         .reel-nav-btn.next { right: 20px; }
-
-        /* Dots */
-        .reel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 24px;
-        }
-
-        .reel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border-medium);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-        }
-
-        .reel-dot.active {
-            background: var(--accent-2);
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        /* Social CTAs */
-        .cta-group {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 28px;
-            flex-wrap: wrap;
-        }
-
-        .instagram-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
+        .reel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+        .reel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border-medium); cursor: pointer; transition: all 0.3s ease; border: none; }
+        .reel-dot.active { background: var(--accent-2); width: 24px; border-radius: 4px; }
+        .cta-group { display: flex; justify-content: center; gap: 15px; margin-top: 28px; flex-wrap: wrap; }
+        .instagram-cta { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5); color: white; padding: 10px 24px; border-radius: 50px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease; }
         .instagram-cta:hover { transform: translateY(-2px); opacity: 0.9; }
-
-        .facebook-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #1877f2;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
+        .facebook-cta { display: inline-flex; align-items: center; gap: 8px; background: #1877f2; color: white; padding: 10px 24px; border-radius: 50px; font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease; }
         .facebook-cta:hover { background: #0e63cf; transform: translateY(-2px); }
 
         @media (max-width: 700px) {
@@ -353,7 +160,6 @@
             .reel-nav-btn.prev { left: 4px; }
             .reel-nav-btn.next { right: 4px; }
         }
-
         @media (max-width: 480px) {
             .reel-carousel-wrapper { height: 380px; }
             .reel-item { width: 170px; }
@@ -449,18 +255,6 @@
         @media (max-width: 1000px) { .listings-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 30px; } }
         @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-col:first-child { grid-column: 1 / -1; margin-bottom: 20px; } }
         @media (max-width: 800px) { .management-grid { grid-template-columns: 1fr; } .features-grid { grid-template-columns: 1fr; } .listings-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } .testi-card { min-width: 300px; } .contact-cta { padding: 50px 30px; } .contact-cta h2 { font-size: 1.8rem; } }
-
-        /* ===== HOVER VIDEO OVERLAY ===== */
-        .hover-video-wrap { position: relative; overflow: hidden; width: 100%; height: 100%; }
-        .newunit-card .hover-video-wrap { height: auto; }
-        .hover-video-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.3s ease; }
-        .newunit-card .hover-video-wrap img { height: 200px; }
-        .hover-video-wrap video.hover-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
-        .hover-video-wrap:hover img { opacity: 0; }
-        .hover-video-wrap:hover video.hover-vid { opacity: 1; }
-        .hover-video-wrap::after { content: '▶ Preview'; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%) translateY(6px); background: rgba(0,0,0,0.65); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; opacity: 0; transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; white-space: nowrap; backdrop-filter: blur(4px); z-index: 5; }
-        .hover-video-wrap:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
-
         @media (max-width: 600px) {
             .listings-grid { grid-template-columns: 1fr; }
             .section-title { font-size: 1.8rem; }
@@ -478,6 +272,7 @@
 </head>
 <body>
 <div class="container">
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">
@@ -527,13 +322,13 @@
                 </div>
                 <div class="promo-card" onclick="window.open('https://www.facebook.com/photo?fbid=122206129796444978&set=a.122093240450444978', '_blank')">
                     <div class="promo-img-container">
-                        <img src="/dorms/materials/turnyour.jpg" alt="Fresh Studio Units" class="promo-card-img">
+                        <img src="/dorms/materials/turnyour.jpg" alt="Maximize Airbnb Income" class="promo-card-img">
                         <span class="promo-badge">✨ NEW</span>
                     </div>
                     <div class="promo-card-content">
                         <h4>Maximize Airbnb Income!</h4>
                         <p>Full-service co-hosting that boosts occupancy and income.</p>
-                        <span class="promo-validity"><i class="fas fa-tag"></i>Priotize your passive income!</span>
+                        <span class="promo-validity"><i class="fas fa-tag"></i> Prioritize your passive income!</span>
                     </div>
                 </div>
             </div>
@@ -543,10 +338,7 @@
         <div id="newunits" class="tab-content">
             <div class="newunits-grid">
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1BLZ8Pk4aL/', '_blank')">
-                    <div class="hover-video-wrap">
-                        <img src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
-                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
-                    </div>
+                    <img src="/dorms/materials/ss100.jpg" alt="Studio Unit" class="newunit-img">
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>Studio Unit at Sunshine 100</h4>
@@ -555,10 +347,7 @@
                     </div>
                 </div>
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
-                    <div class="hover-video-wrap">
-                        <img src="/dorms/materials/1309.jpg" alt="1BR Condotel" class="newunit-img">
-                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
-                    </div>
+                    <img src="/dorms/materials/1309.jpg" alt="1BR Condotel" class="newunit-img">
                     <span class="newunit-badge hot">HOT</span>
                     <div class="newunit-info">
                         <h4>Newly Renovated 1BR Ridgewood Towers</h4>
@@ -567,10 +356,7 @@
                     </div>
                 </div>
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1Ed3JF4q36/', '_blank')">
-                    <div class="hover-video-wrap">
-                        <img src="/dorms/materials/1513-sala.png" alt="Solo Room" class="newunit-img">
-                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
-                    </div>
+                    <img src="/dorms/materials/1513-sala.png" alt="Female Condo Sharing" class="newunit-img">
                     <span class="newunit-badge">NEW</span>
                     <div class="newunit-info">
                         <h4>New Female Condo Sharing Unit</h4>
@@ -578,12 +364,8 @@
                         <div class="newunit-price">₱6,500 <small>/month</small></div>
                     </div>
                 </div>
-                <!-- ⚠️ Update Azure FB link when available -->
                 <div class="newunit-card" onclick="window.open('https://www.facebook.com/share/p/1HsiC9UYq3/', '_blank')">
-                    <div class="hover-video-wrap">
-                        <img src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
-                        <video class="hover-vid" src="" muted loop playsinline preload="none"></video>
-                    </div>
+                    <img src="/dorms/materials/air azu 5.jpg" alt="Azure Unit" class="newunit-img">
                     <span class="newunit-badge hot">TRENDING</span>
                     <div class="newunit-info">
                         <h4>1BR Azure Residence</h4>
@@ -601,13 +383,11 @@
         <p class="reels-subtitle">Experience Citispace Properties in action</p>
 
         <div class="reel-carousel-wrapper">
-            <!-- Prev button -->
             <button class="reel-nav-btn prev" id="reelPrev" aria-label="Previous reel">
                 <i class="fas fa-chevron-left"></i>
             </button>
 
             <div class="reel-carousel-track" id="reelTrack">
-                <!-- Reel 0 -->
                 <div class="reel-item" data-index="0">
                     <video muted loop playsinline>
                         <source src="/dorms/materials/latestvid.mp4" type="video/mp4">
@@ -618,7 +398,6 @@
                         <span>Citispace Properties</span>
                     </div>
                 </div>
-                <!-- Reel 1 — replace src with your 2nd video -->
                 <div class="reel-item" data-index="1">
                     <video muted loop playsinline>
                         <source src="/dorms/materials/latestvid2.mp4" type="video/mp4">
@@ -629,7 +408,6 @@
                         <span>Taguig · Near BGC</span>
                     </div>
                 </div>
-                <!-- Reel 2 — replace src with your 3rd video -->
                 <div class="reel-item" data-index="2">
                     <video muted loop playsinline>
                         <source src="/dorms/materials/latestvid3.mp4" type="video/mp4">
@@ -642,13 +420,11 @@
                 </div>
             </div>
 
-            <!-- Next button -->
             <button class="reel-nav-btn next" id="reelNext" aria-label="Next reel">
                 <i class="fas fa-chevron-right"></i>
             </button>
         </div>
 
-        <!-- Dots -->
         <div class="reel-dots" id="reelDots">
             <button class="reel-dot active" data-dot="0"></button>
             <button class="reel-dot" data-dot="1"></button>
@@ -670,14 +446,38 @@
         <h2 class="section-title">DORMS</h2>
         <p class="section-sub">Stay short-term (1–5 months) or long-term (6 months–1 year). Flexible leases, cozy spaces—your home, your timeline.</p>
         <div class="listings-grid">
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/bedspace.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Female double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/classic.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms1.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">4-pax</span></div><div class="listing-info"><h4>Quad room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms2.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Female quad sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms3.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">6-8 pax</span></div><div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,200 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms4.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Male double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500<small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/soloo.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">Solo</span></div><div class="listing-info"><h4>Female solo room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱8,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='dorms'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/dorms6.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long">2-pax</span></div><div class="listing-info"><h4>Common area</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱5,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/bedspace.jpg"><span class="listing-tag long">2-pax</span></div>
+                <div class="listing-info"><h4>Female double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/classic.jpg"><span class="listing-tag long">6-8 pax</span></div>
+                <div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/dorms1.jpg"><span class="listing-tag long">4-pax</span></div>
+                <div class="listing-info"><h4>Quad room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/dorms2.jpg"><span class="listing-tag long">6-8 pax</span></div>
+                <div class="listing-info"><h4>Female quad sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/dorms3.jpg"><span class="listing-tag long">6-8 pax</span></div>
+                <div class="listing-info"><h4>Male classic room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱6,200 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/dorms4.jpg"><span class="listing-tag long">2-pax</span></div>
+                <div class="listing-info"><h4>Male double sharing</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig · Near BGC</div><div class="listing-price">₱7,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/soloo.jpg"><span class="listing-tag long">Solo</span></div>
+                <div class="listing-info"><h4>Female solo room</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱8,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='dorms'">
+                <div class="listing-img"><img src="/dorms/materials/dorms6.jpg"><span class="listing-tag long">2-pax</span></div>
+                <div class="listing-info"><h4>Common area</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱5,500 <small>/month</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
         </div>
         <div class="see-more-wrapper">
             <a href="dorms" class="see-more-btn">See More Dorms <i class="fas fa-arrow-right"></i></a>
@@ -689,14 +489,38 @@
         <h2 class="section-title">CONDOTELS</h2>
         <p class="section-sub">Short trip or extended stay? We've got you. Daily, weekly, and monthly rates available.</p>
         <div class="listings-grid">
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air1.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air2.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air3.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air4 fame.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air azu 5.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air azu 6.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/airbnb.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
-            <div class="listing-card" onclick="window.location.href='homestay'"><div class="listing-img"><div class="hover-video-wrap"><img src="/dorms/materials/air8.jpg"><video class="hover-vid" src="" muted loop playsinline preload="none"></video></div><span class="listing-tag long2">Homestay</span></div><div class="listing-info"><h4>1 BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499<small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div></div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air1.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air2.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air3.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1BR unit in Ridgewood Towers</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Taguig</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air4 fame.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air azu 5.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air azu 6.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1BR unit in Azure Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Paranaque</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/airbnb.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1 BR unit in Light Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
+            <div class="listing-card" onclick="window.location.href='homestay'">
+                <div class="listing-img"><img src="/dorms/materials/air8.jpg"><span class="listing-tag long2">Homestay</span></div>
+                <div class="listing-info"><h4>1 BR unit in Fame Residence</h4><div class="listing-location"><i class="fas fa-location-dot"></i> Mandaluyong</div><div class="listing-price">₱2,499 <small>/night</small></div><div class="listing-badge"><i class="fa-regular fa-building"></i> View Details</div></div>
+            </div>
         </div>
         <div class="see-more-wrapper">
             <a href="homestay" class="see-more-btn2">See More Condotels <i class="fas fa-arrow-right"></i></a>
@@ -733,7 +557,7 @@
         </div>
     </div>
 
-    <!-- ===== SECTION 6: WHY CHOOSE US ===== -->
+    <!-- ===== SECTION 6: WHY CHOOSE US ===== */-->
     <div style="margin-top: 80px;">
         <div class="features-grid">
             <div class="feature-item"><i class="fas fa-screwdriver-wrench"></i><h4>Property Maintenance</h4><p>Regular inspections, repairs, and cleaning to keep properties in excellent condition.</p></div>
@@ -755,7 +579,7 @@
             <div class="testimonials-track">
                 <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Yay! very accommodating and ang smooth ng process. Just move in yesterday after payment the unit is all good love the process thank you everyone 😊"</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Alyssa</h5><div class="author-occupation">Marketing Specialist, BGC</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
                 <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Seamless transaction for me as someone from the province looking for a place to relocate near BGC. Highly recommended!"</p><div class="testi-author"><div class="author-avatar"><span>A</span></div><div class="author-info"><h5>Andora</h5><div class="author-occupation">Accountant, Makati</div><div class="author-platform"><i class="fas fa-home"></i> Direct Tenant</div></div></div></div>
-                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Host is responsive and accomodating. It's my second time booking with them and will definitely book again on my next trip <3"</p><div class="testi-author"><div class="author-avatar"><span>H</span></div><div class="author-info"><h5>Hazel-jean</h5><div class="author-occupation">Flight Attendant</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
+                <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Host is responsive and accomodating. It's my second time booking with them and will definitely book again on my next trip &lt;3"</p><div class="testi-author"><div class="author-avatar"><span>H</span></div><div class="author-info"><h5>Hazel-jean</h5><div class="author-occupation">Flight Attendant</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
                 <div class="testi-card"><i class="fas fa-quote-left"></i><p>"I booked around 8–9 PM after arriving from a flight. I was pleasantly surprised by how well they handled the booking."</p><div class="testi-author"><div class="author-avatar"><span>J</span></div><div class="author-info"><h5>Joan</h5><div class="author-occupation">Registered Nurse</div><div class="author-platform"><i class="fas fa-hotel"></i> Agoda Guest</div></div></div></div>
                 <div class="testi-card"><i class="fas fa-quote-left"></i><p>"The team was very responsive and professional. Highly recommend Citispace for property management!"</p><div class="testi-author"><div class="author-avatar"><span>M</span></div><div class="author-info"><h5>Maria Santos</h5><div class="author-occupation">Property Investor, BGC</div><div class="author-platform"><i class="fas fa-building"></i> Property Owner</div></div></div></div>
                 <div class="testi-card"><i class="fas fa-quote-left"></i><p>"Great experience from start to finish. The unit was exactly as described and check-in was seamless."</p><div class="testi-author"><div class="author-avatar"><span>R</span></div><div class="author-info"><h5>Ramon</h5><div class="author-occupation">Software Engineer, BGC</div><div class="author-platform"><i class="fab fa-airbnb"></i> Airbnb Guest</div></div></div></div>
@@ -791,6 +615,7 @@
         </div>
         <div class="copyright">© 2026 Citispace Properties · Making Homes More Valuable</div>
     </footer>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -814,8 +639,6 @@
         let current = 0;
         let soundMuted = true;
 
-        const positions = ['pos-left', 'pos-center', 'pos-right'];
-
         function getPos(itemIndex, centerIndex) {
             const diff = (itemIndex - centerIndex + total) % total;
             if (diff === 0) return 'pos-center';
@@ -829,8 +652,6 @@
                 item.classList.add(getPos(i, current));
             });
             dots.forEach((d, i) => d.classList.toggle('active', i === current));
-
-            // Play center video, pause others
             items.forEach((item, i) => {
                 const vid = item.querySelector('video');
                 if (i === current) {
@@ -841,8 +662,6 @@
                     vid.muted = true;
                 }
             });
-
-            // Sync sound button icon on center
             const centerSoundBtn = items[current].querySelector('.reel-sound-btn');
             centerSoundBtn.innerHTML = soundMuted
                 ? '<i class="fas fa-volume-mute"></i>'
@@ -861,7 +680,6 @@
             dot.addEventListener('click', () => goTo(parseInt(dot.getAttribute('data-dot'))));
         });
 
-        // Click side reels to bring to center
         items.forEach((item, i) => {
             item.addEventListener('click', function(e) {
                 if (e.target.closest('.reel-sound-btn')) return;
@@ -873,7 +691,6 @@
             });
         });
 
-        // Sound toggle on center reel
         items.forEach(item => {
             const btn = item.querySelector('.reel-sound-btn');
             btn.addEventListener('click', function(e) {
@@ -885,7 +702,6 @@
             });
         });
 
-        // Swipe support
         let touchStartX = 0;
         const track = document.getElementById('reelTrack');
         track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
@@ -896,22 +712,6 @@
 
         applyCarousel();
     })();
-
-    // ===== HOVER VIDEO PLAY/PAUSE =====
-    document.querySelectorAll('.hover-video-wrap').forEach(function(wrap) {
-        var vid = wrap.querySelector('video.hover-vid');
-        if (!vid) return;
-        wrap.addEventListener('mouseenter', function() {
-            if (vid.getAttribute('src') && vid.getAttribute('src') !== '') {
-                vid.currentTime = 0;
-                vid.play().catch(function() {});
-            }
-        });
-        wrap.addEventListener('mouseleave', function() {
-            vid.pause();
-            vid.currentTime = 0;
-        });
-    });
 
     // ===== TESTIMONIALS CAROUSEL =====
     $(document).ready(function() {
