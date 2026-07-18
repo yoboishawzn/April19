@@ -474,7 +474,7 @@
 <body>
 
 <!-- ===== WELCOME MODAL ===== -->
-<div class="welcome-overlay" id="welcomeOverlay">
+<div class="welcome-overlay hidden" id="welcomeOverlay">
     <div class="welcome-modal">
         <button class="welcome-close" id="welcomeClose" aria-label="Close welcome message">
             <i class="fas fa-times"></i>
@@ -857,23 +857,36 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // ===== WELCOME MODAL =====
+    // ===== WELCOME MODAL - SHOW ONLY ON EXTERNAL VISITS =====
     (function() {
         const overlay = document.getElementById('welcomeOverlay');
         const closeBtn = document.getElementById('welcomeClose');
         const exploreBtn = document.getElementById('welcomeExploreBtn');
         const learnBtn = document.getElementById('welcomeLearnBtn');
 
-        // Check if user has already seen the welcome message
-        const hasSeenWelcome = localStorage.getItem('citispace_welcome_seen');
+        // Check if this is a direct external visit (not from internal navigation)
+        const isExternalVisit = !document.referrer || 
+            !document.referrer.includes(window.location.hostname) ||
+            document.referrer === '';
 
-        if (hasSeenWelcome) {
-            overlay.classList.add('hidden');
+        // Check if user has already seen the welcome message in this session
+        const hasSeenInSession = sessionStorage.getItem('citispace_welcome_seen');
+
+        // Only show if:
+        // 1. It's an external visit (direct URL, search engine, or external link)
+        // 2. AND the user hasn't seen it in this session yet
+        if (isExternalVisit && !hasSeenInSession) {
+            // Small delay to ensure page loads first
+            setTimeout(function() {
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }, 400);
         }
 
         function closeModal() {
             overlay.classList.add('hidden');
-            localStorage.setItem('citispace_welcome_seen', 'true');
+            document.body.style.overflow = '';
+            sessionStorage.setItem('citispace_welcome_seen', 'true');
         }
 
         closeBtn.addEventListener('click', closeModal);
